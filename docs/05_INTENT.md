@@ -145,7 +145,7 @@ The two interventions reinforce each other. The lexicon gives the verifier somet
 prevents the lexicon from being silently violated by the next session's prompt. Neither is sufficient alone. Together they keep
 the reasoning surface small enough to be reasoned over.
 
-## A Note on Measurability
+### A Note on Measurability
 
 Whether vocabulary quality is itself measurable is a separate question and one this paper does not depend on, but it is worth
 flagging. The same primitives that compute the structural metrics in Section IV -- AST traversal, symbol indexing, token analysis
@@ -155,15 +155,16 @@ declared lexicon. None of these metrics exists in the literature in the form nee
 interventions above to function. They are mentioned only to note that the same measurement framework that constrains architecture
 can in principle be turned on the language used to describe it, if the field decides that is a problem worth solving.
 
----
+## How the Model Got Worse: An Alternative Perspective
 
-**The reasoning surface starts small.** Intent is at its clearest before the project expands, before the vocabulary is contaminated,
-before `read` has been used to mean six different things across forty files. *The cost of precision is lowest at the beginning
-and highest at the end.*
+At the beginning of each session **the reasoning surface starts small.** Intent is at its clearest *before* the project expands, 
+*before* the vocabulary is contaminated, and *before* `read` has been used to mean six different things across forty files. The
+cost of imprecision is *lowest* at the **beginning** and *highest* at the **end**.
 
 **The model did not get worse. The language it was asked to reason over got harder.** The interventions in this section are not
-about constraining the model. They are about keeping *the vocabulary it reasons in worth reasoning about*. Precision at the point
-of definition is cheaper than precision at the point of use, and the difference compounds across every session that follows.
+about constraining the model. They are about keeping **the vocabulary it reasons in worth reasoning about**. Precision at the
+**point of definition** is cheaper than **precision at the point of use**, and the difference compounds across every session
+that follows.
 
 ---
 
