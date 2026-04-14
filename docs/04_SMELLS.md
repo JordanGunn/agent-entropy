@@ -195,10 +195,12 @@ The metrics in this section **predate the smartphones used to praise the AI tool
 * McCabe published Cyclomatic Complexity in 1976 -- three years before the first commercial spreadsheet.
 * Halstead followed with Software Science in 1977.
 * Henry and Kafura formalised information flow complexity in 1981.
-* Parnas described software aging in 1994. Martin formalised architectural rot in the same year. Chidamber and Kemerer published
-  the object-oriented metrics suite in the same year.
+* Parnas described software aging in 1994.
+* Martin formalised architectural rot in 1994.
+* Chidamber and Kemerer published the object-oriented metrics suite in 1994 (big year, apparently).
 * Gall, Hajek, and Jazayeri described change coupling in 1998.
-* The entire catalogue predates the first AI coding assistant by **more than four decades**.
+
+The entire catalogue predates the first AI coding assistant by **more than four decades**.
 
 This body of work has been sitting in conference proceedings and textbooks for *forty years* -- **precise and computable and largely
 unread** -- waiting to be applied to a problem that did not yet exist when it was written. The field spent forty years building
