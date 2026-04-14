@@ -1,19 +1,21 @@
 # V. The Intent Gap
 
-Spend enough time in forums where developers discuss AI coding tools and a pattern emerges. The model was incredible
+Spend enough time in forums where developers discuss AI coding tools and a pattern emerges. *The model was incredible
 at first. Lately, it seems slower, less precise, more prone to making strange decisions. The quality has clearly degraded.
-Someone, somewhere, must have changed something.
+Someone, somewhere, must have changed something.*
 
-This complaint is sincere. It is also, in most cases, a description of the wrong variable.
+This complaint is sincere. It is also, in most cases, **a description of the wrong variable**.
 
 Some part of the perceived degradation is real and attributable to model updates, throttling, or routing changes. Some part of
-it is recency bias. But a significant share -- larger than the discourse acknowledges -- is something else entirely.
+it is recency bias. But a significant share -- *larger than the discourse acknowledges* -- is something else entirely.
 
-Nothing changed in the model.
-Everything changed around it.
+> **Nothing changed in the model.**
+> *Everything changed around it.*
+
+## The PDF that ate the codebase
 
 Consider how a project typically begins. A developer has a clear, narrow objective. They need to ingest data from PDF files.
-The intent is clean, the vocabulary is not yet contaminated, and the reasoning surface the agent must navigate is small.
+The intent is clean, the vocabulary is not yet contaminated, and **the reasoning surface the agent must navigate is small**.
 They ask the agent to create something that *reads* a PDF. It works. The model seems sharp.
 
 Then the project grows. The data will also come from object storage, so the agent is asked to create something that *reads*
@@ -23,20 +25,22 @@ because at each individual step it seems obvious. *Read* from disk. *Read* from 
 
 By the time the project reaches any meaningful scale, the codebase contains something like the following: `read_pdf()`,
 `read_pdf_from_azure()`, `read_disk_pdf()`, `read_from_uri()`, `read_docx()`, `modify_and_read()`. Each function was named
-reasonably at the time it was created. Together they are a semantic catastrophe.
+reasonably at the time it was created. **Together they are a semantic catastrophe.**
 
 The agent, asked to do anything involving data ingestion, must now reason across all of them. It must infer which one applies,
 whether they overlap, whether they are interchangeable, whether `read_pdf_from_azure()` and `read_from_uri()` are the same thing
-with different names or different things with confusingly similar ones. Every token spent resolving this ambiguity is a token not
-spent on the actual task. The output gets worse. The developer experiences this as the model degrading.
+with different names or different things with confusingly similar ones. *Every token spent resolving this ambiguity is a token not
+spent on the actual task.* The output gets worse. **The developer experiences this as the model degrading.**
 
 The pattern is not unique to ingestion. The same collapse happens to `process()` in data pipelines, to `handle()` in web frameworks,
-to `manage()` in infrastructure code, to `update()` in nearly anything stateful. Pick any verb general enough to be reached for
-without thought, and a sufficiently large codebase will eventually have eight functions that share its prefix and disagree about
-what it means. The PDF example is illustrative; the underlying mechanism is universal.
+to `manage()` in infrastructure code, to `update()` in nearly anything stateful. *Pick any verb general enough to be reached for
+without thought*, and a sufficiently large codebase will eventually have eight functions that share its prefix and disagree about
+what it means. The PDF example is illustrative; **the underlying mechanism is universal**.
 
-What has actually happened is that a single overloaded term has collapsed several distinct architectural concepts into the same
-namespace. The act of fetching bytes from object storage is not the same as deserialising a PDF into structured data, which is
+## Vocabulary collapses architecture
+
+What has actually happened is that **a single overloaded term has collapsed several distinct architectural concepts into the same
+namespace**. The act of fetching bytes from object storage is not the same as deserialising a PDF into structured data, which is
 not the same as materialising records into a processing engine. These are separate concerns with separate failure modes, separate
 dependencies, and separate reasons to change. The word "read" does not distinguish between them. Used consistently enough, it
 actively prevents the distinction from being made. Once everything is `read`, there is no linguistic surface on which to hang
@@ -59,11 +63,11 @@ team to agree on what words mean, and the model of the domain becomes easier to 
 worked, because humans carry context. They remember the conversation in which `load` was distinguished from `fetch`, even when
 the distinction was never written down. The vocabulary survived in the heads of the team that built it *(Evans, E., 2003)*.
 
-In an agentic context, the social solution stops working. The agent has no team memory. It cannot sense when a term has drifted.
+In an agentic context, **the social solution stops working**. The agent has *no team memory*. It cannot sense when a term has drifted.
 It cannot ask a colleague what `read_from_uri()` was supposed to do when it was first written. It can only reason from what is in
-front of it, and if what is in front of it is ambiguous, it will produce ambiguous output -- confidently, fluently, and at scale.
-The artifact Evans proposed remains the right artifact. What changes is the *enforcement layer*: it can no longer be social,
-because the participant most reliant on it is no longer social.
+front of it, and if what is in front of it is ambiguous, it will produce ambiguous output -- *confidently, fluently, and at scale*.
+The artifact Evans proposed remains the right artifact. What changes is the ***enforcement layer***: it can no longer be social,
+because **the participant most reliant on it is no longer social**.
 
 Bertrand Meyer formalised *Design by Contract* in 1992. Meyer's argument was that software components should carry explicit,
 verifiable specifications of their behaviour -- preconditions, postconditions, and invariants -- rather than relying on
@@ -75,19 +79,19 @@ because a function whose name has drifted will be misused long before its body i
 
 ## Why Vocabulary Rots Slower Than Prose
 
-A controlled vocabulary -- a short, maintained list of primitive terms with unambiguous, scoped definitions -- is the most
-rot-resistant artifact a development team can produce. Not because vocabulary maintenance demands more discipline than `CLAUDE.md`
+A **controlled vocabulary** -- a short, maintained list of primitive terms with unambiguous, scoped definitions -- is *the most
+rot-resistant artifact a development team can produce*. Not because vocabulary maintenance demands more discipline than `CLAUDE.md`
 maintenance, but because vocabulary, structurally, has properties that resist the failure modes documented in Section III.
 
-It is *small*: a single page, read in one pass, with no room for paragraphs of guidance to drift past unnoticed. It is *constrained*:
-each entry is short and definitional rather than narrative, which makes inconsistencies between entries immediately visible to a
-human reader and trivially detectable by tooling. And it is *enforceable*: a function named `read_pdf_from_azure` in a codebase
-that defines `read` as "deserialise into in-memory representation" is mechanically wrong in a way that a function violating a
-paragraph of architectural guidance is not. The same instruments that catch typos can catch semantic violations, provided the
-vocabulary is precise enough to define what a violation looks like.
+It is ***small***: a single page, read in one pass, with no room for paragraphs of guidance to drift past unnoticed. It is
+***constrained***: each entry is short and definitional rather than narrative, which makes inconsistencies between entries
+immediately visible to a human reader and trivially detectable by tooling. And it is ***enforceable***: a function named
+`read_pdf_from_azure` in a codebase that defines `read` as "deserialise into in-memory representation" is *mechanically wrong* in
+a way that a function violating a paragraph of architectural guidance is not. **The same instruments that catch typos can catch
+semantic violations**, provided the vocabulary is precise enough to define what a violation looks like.
 
-This is the property that lets vocabulary survive what prose cannot. Prose rots because nothing breaks when it is wrong. A
-vocabulary entry that has drifted from the codebase produces visible mismatches at every site of use. The decay is observable,
+This is the property that lets vocabulary survive what prose cannot. *Prose rots because nothing breaks when it is wrong.* A
+vocabulary entry that has drifted from the codebase produces **visible mismatches at every site of use**. The decay is observable,
 which means it can be detected, which means it can be prevented from compounding.
 
 ## Intervention One: Domain-Scoped Lexicons
@@ -116,15 +120,15 @@ established in Section II, the agent is optimised to agree rather than interroga
 encoded directly into the codebase, where it compounds with every subsequent session.
 
 The simplest viable response is **structural separation**: rather than a single agent that both interrogates and implements, a
-two-agent layer in which an *intent verifier* and an *implementation agent* are explicitly distinct roles. The intent verifier
-reads the user's prompt before any implementation begins. Its job is not to be helpful. Its job is to refuse forward progress
-until ambiguity has been resolved. The implementation agent never receives the raw prompt; it receives only the verified,
+two-agent layer in which an ***intent verifier*** and an ***implementation agent*** are explicitly distinct roles. The intent verifier
+reads the user's prompt before any implementation begins. *Its job is not to be helpful.* **Its job is to refuse forward progress
+until ambiguity has been resolved.** The implementation agent never receives the raw prompt; it receives only the verified,
 disambiguated intent that has passed the verifier's gate.
 
-The architectural separation matters more than it may appear. Asking the same agent to "be skeptical" and then to "be helpful"
-in the same session is asking it to apply incompatible objectives in sequence -- and the helpful objective is the one its training
-rewards. Two agents with two roles avoid this collision: the intent verifier is judged on whether it surfaces ambiguity, the
-implementation agent is judged on whether it executes a clear intent correctly, and neither is asked to do both at once.
+The architectural separation matters more than it may appear. Asking the same agent to *"be skeptical"* and then to *"be helpful"*
+in the same session is asking it to apply **incompatible objectives in sequence** -- and the helpful objective is the one its training
+rewards. Two agents with two roles avoid this collision: the intent verifier is judged on whether it *surfaces ambiguity*, the
+implementation agent is judged on whether it *executes a clear intent correctly*, and neither is asked to do both at once.
 
 The verifier's failure mode is worth naming explicitly. If the verifier and the implementer share the same underlying model,
 training, and prompt template, they share the same bias toward agreement. The structural separation is necessary but not
@@ -153,12 +157,12 @@ can in principle be turned on the language used to describe it, if the field dec
 
 ---
 
-The reasoning surface starts small. Intent is at its clearest before the project expands, before the vocabulary is contaminated,
-before `read` has been used to mean six different things across forty files. The cost of precision is lowest at the beginning
-and highest at the end.
+**The reasoning surface starts small.** Intent is at its clearest before the project expands, before the vocabulary is contaminated,
+before `read` has been used to mean six different things across forty files. *The cost of precision is lowest at the beginning
+and highest at the end.*
 
-The model did not get worse. The language it was asked to reason over got harder. The interventions in this section are not
-about constraining the model. They are about keeping the vocabulary it reasons in worth reasoning about. Precision at the point
+**The model did not get worse. The language it was asked to reason over got harder.** The interventions in this section are not
+about constraining the model. They are about keeping *the vocabulary it reasons in worth reasoning about*. Precision at the point
 of definition is cheaper than precision at the point of use, and the difference compounds across every session that follows.
 
 ---

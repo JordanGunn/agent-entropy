@@ -1,39 +1,43 @@
 # IV. What Messy Actually Means
 
-The feeling described in `Section I` has a name. It has had one since 1999.
+The feeling described in `Section I` has a name. **It has had one since 1999.**
 
-A code smell is any characteristic of source code that hints at a deeper problem. The term was coined by Kent Beck and
+A ***code smell*** is any characteristic of source code that hints at a deeper problem. The term was coined by **Kent Beck** and
 popularised through his contributed chapter in Martin Fowler's *Refactoring: Improving the Design of Existing Code*. It is,
 notably, a metaphor borrowed from the physical world. The idea being that bad code, like something left too long in the
-refrigerator, announces itself before you can quite explain why. You know it before you can prove it.
+refrigerator, *announces itself before you can quite explain why*. **You know it before you can prove it.**
 
-This is charming, and also a problem.
+*This is charming, and also a problem.*
 
-The olfactory metaphor is an honest admission that the thing being described resists precise description. Determining what
+## The metaphor has a cost
+
+The olfactory metaphor is an honest admission that the thing being described *resists precise description*. Determining what
 *is* and *is not* a code smell is subjective, and varies by language, developer, and development methodology. Fowler catalogued
-twenty-two of them in 1999: Feature Envy, Shotgun Surgery, Divergent Change, God Class, and nineteen others. Each came with a
+**twenty-two** of them in 1999: *Feature Envy, Shotgun Surgery, Divergent Change, God Class,* and nineteen others. Each came with a
 name evocative enough to recognise in a textbook and vague enough to argue about in a code review. Subsequent taxonomies expanded
-the list. Researchers grouped the smells, regrouped them, and debated their boundaries. Not being able to identify code smells is
-one of the greatest barriers to refactoring. Many developers do not detect design problems while they are still small and localised.
-In practice, smells are often not sensed until the problems are quite large, or have compounded with other problems and spread
-through the codebase.
+the list. Researchers grouped the smells, regrouped them, and debated their boundaries. *Not being able to identify code smells is
+one of the greatest barriers to refactoring.* Many developers do not detect design problems while they are still small and localised.
+In practice, smells are often not sensed until **the problems are quite large, or have compounded with other problems and spread
+through the codebase**.
 
-This was already a problem when the only reader of the code was a human. When the reader is an agent, it becomes a structural failure.
+This was already a problem when the only reader of the code was a human. **When the reader is an agent, it becomes a structural failure.**
 
-An agent has no nose. It cannot detect the vague wrongness that an experienced developer senses when a class has drifted too far
+*An agent has no nose.* It cannot detect the vague wrongness that an experienced developer senses when a class has drifted too far
 from a single responsibility, or when a package boundary has been quietly violated one convenience import at a time. It can be
 told what smells are, given a list, or instructed to look for them. But natural language descriptions of subjective symptoms,
-delivered into a context window already optimised for agreement, are not a reliable enforcement surface. Smells, as currently
-defined, are a human interface. They require experience to recognise, and experience is precisely what the developers most reliant
-on AI assistance have not yet accumulated.
+delivered into a context window *already optimised for agreement*, are **not a reliable enforcement surface**. Smells, as currently
+defined, are *a human interface*. They require experience to recognise, and **experience is precisely what the developers most reliant
+on AI assistance have not yet accumulated**.
+
+## What is needed is something computable
 
 **What is needed is something computable.** Something that does not require an experienced nose, that produces the same result
-regardless of who runs it, and that cannot be argued away in a code review. More importantly, something that exists *outside the
-agent's control surface entirely*. A metric the agent computes for itself is subject to the same incentive structure as every
-other output it produces -- if approval is the goal, the score will be massaged, rounded, or quietly omitted. A metric computed
-by external tooling and reported back is something else: a fixed referent the agent cannot reshape, the conversational equivalent
-of running into a wall. This is the architectural inversion of the sycophancy problem described in Section II. Agreement is cheap;
-arithmetic is not.
+regardless of who runs it, and that *cannot be argued away in a code review*. More importantly, something that exists ***outside the
+agent's control surface entirely***. A metric the agent computes for itself is subject to the same incentive structure as every
+other output it produces -- if approval is the goal, *the score will be massaged, rounded, or quietly omitted*. A metric computed
+by **external tooling and reported back** is something else: a *fixed referent the agent cannot reshape*, the conversational equivalent
+of running into a wall. This is the architectural inversion of the sycophancy problem described in Section II. **Agreement is cheap;
+arithmetic is not.**
 
 The research community has been building these instruments for decades. They have simply not been applied to the agentic context.
 What follows is a survey of the candidate measurements, organised loosely by the property they capture.
@@ -179,12 +183,14 @@ the measurements. It is the scaffolding to apply them at the cadence and granula
 exist outside the agent's control surface and report back in formats the agent cannot quietly ignore.
 
 **Taken together, these metrics form a shared language for code quality that requires no experience to apply and no subjectivity
-to interpret**. A developer who cannot yet feel when code is wrong can still read a Distance score, an LCOM value, a Cognitive
+to interpret.** A developer who cannot yet feel when code is wrong can still read a Distance score, an LCOM value, a Cognitive
 Complexity threshold. An agent can be required to compute them, check them against defined limits, and refuse to proceed when they
-are exceeded -- *provided the computation happens somewhere it cannot quietly skip*. The smell becomes a measurement. The
-measurement becomes a contract. The contract does not rot.
+are exceeded -- *provided the computation happens somewhere it cannot quietly skip*. **The smell becomes a measurement. The
+measurement becomes a contract. *The contract does not rot.***
 
-None of this is new. The metrics in this section predate the smartphones used to praise the AI tools that ignore them:
+## None of this is new
+
+The metrics in this section **predate the smartphones used to praise the AI tools that ignore them**:
 
 * McCabe published Cyclomatic Complexity in 1976 -- three years before the first commercial spreadsheet.
 * Halstead followed with Software Science in 1977.
@@ -194,10 +200,10 @@ None of this is new. The metrics in this section predate the smartphones used to
 * Gall, Hajek, and Jazayeri described change coupling in 1998.
 * The entire catalogue predates the first AI coding assistant by **more than four decades**.
 
-This body of work has been sitting in conference proceedings and textbooks for forty years, precise and computable and largely
-unread, waiting to be applied to a problem that did not yet exist when it was written. The field spent forty years building
+This body of work has been sitting in conference proceedings and textbooks for *forty years* -- **precise and computable and largely
+unread** -- waiting to be applied to a problem that did not yet exist when it was written. The field spent forty years building
 instruments capable of measuring code quality with mathematical rigour. Then it built systems capable of producing code at
-industrial scale. Then it connected the two with a markdown file.
+industrial scale. **Then it connected the two with a markdown file.**
 
 ---
 

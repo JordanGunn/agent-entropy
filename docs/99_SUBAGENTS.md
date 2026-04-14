@@ -1,16 +1,16 @@
 # XI. The Contract at the Boundary
 
-The interventions described in Section VII form a complete answer to the three gradient
+The interventions described in Section VII form a complete answer to the three *gradient*
 smells catalogued in Section VI. They do not yet account for a primitive that, in current
 agentic platforms, has moved from a speculative feature to a first-class capability:
-the sub-agent.
+**the sub-agent**.
 
-A sub-agent, in the terminology of Claude Code and comparable systems, is an agent
-definition that can be invoked from a running session as a delegated, context-isolated
-call. The caller provides a brief. The sub-agent runs in a fresh context, with its own
-system prompt, its own tool whitelist, and no memory of the caller's session state. It
-returns a single structured message. The caller receives that message and nothing else --
-no intermediate reasoning, no tool-call trace, no partial state.
+A ***sub-agent***, in the terminology of Claude Code and comparable systems, is an agent
+definition that can be invoked from a running session as a *delegated, context-isolated
+call*. The caller provides a brief. The sub-agent runs in a fresh context, with *its own
+system prompt, its own tool whitelist, and no memory of the caller's session state*. It
+returns a single structured message. The caller receives **that message and nothing else** --
+*no intermediate reasoning, no tool-call trace, no partial state*.
 
 This section argues that the framework developed in the preceding sections applies to
 sub-agent definitions directly, with almost no modification, and that the sub-agent is
@@ -23,13 +23,13 @@ and developer to the relationship between sub-agent and caller.
 
 ## The Agent Definition as an Artifact Subject to the Taxonomy
 
-The sub-agent is not defined by a conversation. It is defined by a file -- a system
+The sub-agent is **not defined by a conversation**. It is defined by *a file* -- a system
 prompt, a tool whitelist, a description used for dispatch, and, in some systems,
-auxiliary references loaded on invocation. This file is version-controlled, long-lived,
-infrequently edited, and persistent across sessions. Every property that made `CLAUDE.md`
+auxiliary references loaded on invocation. This file is *version-controlled, long-lived,
+infrequently edited, and persistent across sessions*. **Every property that made `CLAUDE.md`
 susceptible to the rot described in Section III applies to the agent definition file with
-equal force. The taxonomy from Section VI applies directly to this artifact, and it does
-not require a single new category to do so.
+equal force.** The taxonomy from Section VI applies directly to this artifact, and it does
+*not require a single new category to do so*.
 
 **Intent smells in agent definitions** manifest as vague dispatch descriptions, system
 prompts that declare helpfulness without declaring scope, and the absence of a stated
@@ -61,9 +61,9 @@ of changing the definition feels high precisely because the provenance is opaque
 same fusion-over-replacement dynamic described in Section VI operates at the agent
 definition layer, and it produces agents that work but cannot be reasoned about.
 
-These are not four new smell categories. They are the same four smells from Section VI,
-observed in a different artifact layer. The framework does not need to be extended to
-cover sub-agents. It was already covering them; the sub-agent is simply another class
+**These are not four new smell categories.** They are *the same four smells from Section VI,
+observed in a different artifact layer*. The framework does not need to be extended to
+cover sub-agents. **It was already covering them** — the sub-agent is simply another class
 of artifact the developer maintains, and the taxonomy applies as written.
 
 ## The Composition Layer
@@ -75,30 +75,30 @@ which multiple deterministic operations are orchestrated by a reasoning process,
 the orchestration itself is the capability being exposed.
 
 This layer becomes meaningful only in the context of a stack. At its cleanest, the
-stack has four distinguishable tiers:
+stack has **four distinguishable tiers**:
 
-1. **Kernels.** The primitive tools -- ripgrep, fd, tree-sitter, git, and their
-   equivalents. Deterministic by construction. Each answers one low-level question about
+1. **Kernels.** The primitive tools -- *ripgrep, fd, tree-sitter, git*, and their
+   equivalents. **Deterministic by construction.** Each answers one low-level question about
    the state of files or symbols.
 
 2. **Deterministic composition.** A layer at which kernels are fused into structured
-   operations whose sequence and output format are fixed at build time. Multiple kernels
-   are chained into a single invocation that produces one structured result. The
-   composition is encoded in code, not in prompts. Every invocation with the same input
-   produces the same output. There is no judgment in this layer because the composition
+   operations whose sequence and output format are *fixed at build time*. Multiple kernels
+   are chained into a single invocation that produces one structured result. *The
+   composition is encoded in code, not in prompts.* **Every invocation with the same input
+   produces the same output.** There is no judgment in this layer because the composition
    has no branching that depends on intermediate reasoning.
 
-3. **Skills.** Thin governance wrappers that teach a reasoning agent when and how to
+3. **Skills.** Thin governance wrappers that teach a reasoning agent *when* and *how* to
    invoke the deterministic composition layer below them. The agent's contribution at
-   this layer is *parameter selection* -- translating intent into a plan that the
-   deterministic layer can execute. The plan itself is declarative. Once submitted, the
-   behavior is mechanical.
+   this layer is ***parameter selection*** -- translating intent into a plan that the
+   deterministic layer can execute. The plan itself is declarative. *Once submitted, the
+   behavior is mechanical.*
 
 4. **Composition sub-agents.** Reactive workflows that orchestrate multiple skill
    invocations in a sequence that may depend on intermediate results, apply classification
-   against declared thresholds, and return structured evidence to the caller. This is the
-   layer at which language-model reasoning is a first-class participant, and it is also
-   the layer at which that reasoning is most tightly constrained by the mechanisms
+   against declared thresholds, and return structured evidence to the caller. **This is the
+   layer at which language-model reasoning is a first-class participant**, and it is also
+   the layer at which that reasoning is *most tightly constrained* by the mechanisms
    described below.
 
 Each layer contributes something the layer beneath it cannot provide. A kernel cannot
@@ -143,27 +143,27 @@ that produces a verdict is a sub-agent whose verdict was produced by a language 
 optimised for agreement, and the orchestrator consuming the verdict has no native
 mechanism for disagreeing with it.
 
-The structural resolution to this concern is to prevent the sub-agent from producing
-verdicts at all. A composition sub-agent, in the form this section proposes, produces
-three things only:
+The structural resolution to this concern is to **prevent the sub-agent from producing
+verdicts at all**. A composition sub-agent, in the form this section proposes, produces
+*three things only*:
 
 1. **Deterministic data.** The raw output of the skills and CLI invocations the sub-agent
-   orchestrated. These are computed values, reproducible by anyone with access to the
-   same tooling. The sub-agent does not author this data; it surfaces it.
+   orchestrated. These are *computed values, reproducible by anyone with access to the
+   same tooling*. The sub-agent does not *author* this data; it ***surfaces*** it.
 
 2. **Classification against declared thresholds.** Each datum is classified into a
    bounded vocabulary declared in the sub-agent's policies file -- *pain / warning /
    clean*, *safe / unsafe / safe-with-caveats*, *present / absent / indeterminate*. The
-   classification is a mechanical mapping from numeric value to category. The mapping is
-   auditable because both the value and the rule are declared.
+   classification is a **mechanical mapping from numeric value to category**. The mapping is
+   *auditable* because both the value and the rule are declared.
 
 3. **Tip-offs.** Indications that classified evidence has crossed a threshold the caller
-   should notice. A tip-off is not a decision. It is the claim *"this value is in the
+   should notice. **A tip-off is not a decision.** It is the claim *"this value is in the
    region the policies file says is worth surfacing."* The caller decides what to do with
    the tip-off.
 
-What the sub-agent does *not* produce is a judgment about what the caller should do
-next. Decisions live with the orchestrator. The sub-agent's job ends at the boundary
+What the sub-agent does ***not*** produce is *a judgment about what the caller should do
+next*. Decisions live with the orchestrator. The sub-agent's job ends at the boundary
 where the evidence has been surfaced in a form the orchestrator can reason over without
 trusting the sub-agent's reasoning.
 
@@ -227,9 +227,9 @@ classification -- `zone = warning` -- has discarded the information the caller w
 need to disagree with the classification or apply a different threshold.
 
 The invariant that must be enforced in the policies of any composition sub-agent is that
-**the report contains both the raw computed value and its classification**, always,
-without exception. The raw value is the escape hatch for the edge case; the classification
-is the convenience for the common case. A caller that agrees with the classification can
+**the report contains both the raw computed value and its classification** — *always,
+without exception*. The raw value is the *escape hatch for the edge case*; the classification
+is the *convenience for the common case*. A caller that agrees with the classification can
 act on it directly. A caller that suspects a borderline judgment can read the raw value
 and apply its own threshold. An auditor can reproduce the classification from the value
 and the rule and verify that the sub-agent did not editorialise.
@@ -243,15 +243,15 @@ layer enforces.
 
 ## Deferred Verification, Not Surrendered Control
 
-The trust model this architecture assumes is worth stating plainly, because it is often
+The trust model this architecture assumes is *worth stating plainly*, because it is often
 mischaracterised when discussed in the context of agentic delegation. The orchestrator,
-in consuming a sub-agent's structured report, is not surrendering control. It is
-deferring verification.
+in consuming a sub-agent's structured report, is **not surrendering control**. It is
+***deferring verification***.
 
-The distinction matters. Surrendered control is the ceremonial-reviewer failure
-described in Section III: the participant who has lost both the act of verification and
-the ability to perform it. Deferred verification is the trust model every professional
-delegation relationship already uses. A senior engineer reading a code review does not
+**The distinction matters.** *Surrendered control* is the ceremonial-reviewer failure
+described in Section III: the participant who has lost *both the act of verification and
+the ability to perform it*. *Deferred verification* is the trust model **every professional
+delegation relationship already uses**. A senior engineer reading a code review does not
 re-verify the reviewer's every claim. They trust the reviewer to be competent, and they
 retain the ability to challenge specific claims when the stakes warrant. The cost of
 delegation is not blind trust -- it is the economy of paying verification costs only
@@ -281,13 +281,13 @@ this separation was implementable today through the `UserPromptSubmit` hook in C
 Code. That observation was technically correct and architecturally weaker than the design
 Section V described.
 
-A hook runs inside the same session as the implementer. The prompt is mutated before the
-model sees it, but the model that reads the mutated prompt is the same model that will
-then produce the implementation, in the same context, carrying the same helpfulness bias
-Section V explicitly warned against. The hook approximates the structural separation. It
-does not realise it.
+A hook runs *inside the same session* as the implementer. The prompt is mutated before the
+model sees it, but **the model that reads the mutated prompt is the same model that will
+then produce the implementation**, in the same context, carrying the same helpfulness bias
+Section V explicitly warned against. *The hook approximates the structural separation.*
+**It does not realise it.**
 
-Sub-agents are the primitive that realises it. A verifier sub-agent runs in a different
+**Sub-agents are the primitive that realises it.** A verifier sub-agent runs in a different
 context, with its own system prompt, potentially with a different model, and its policies
 can mandate adversarial interpretation of the user's intent -- *"find the interpretation
 of this prompt that would produce the worst possible output, and surface it before the

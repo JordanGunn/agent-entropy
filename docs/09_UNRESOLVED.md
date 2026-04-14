@@ -1,16 +1,16 @@
 # IX. What Remains Unsolved
 
-No framework survives contact with a real codebase without leaving something unresolved. The three intervention pillars described in this paper are tractable, implementable, and grounded in decades of prior work. They are not complete. The following problems remain open, and intellectual honesty requires naming them directly.
+**No framework survives contact with a real codebase without leaving something unresolved.** The three intervention pillars described in this paper are *tractable, implementable, and grounded in decades of prior work*. **They are not complete.** The following problems remain open, and *intellectual honesty requires naming them directly*.
 
 ---
 
 ### The Intent Bootstrapping Problem
 
-Metrics define a floor. They do not encode why a decision was made.
+**Metrics define a floor. They do not encode *why* a decision was made.**
 
 A package with high instability might have been designed that way deliberately -- a rapidly evolving module in active development, intentionally kept concrete until its interface stabilises. A class with high LCOM might be large for a legitimate domain reason that no metric can see. The framework as described has no mechanism for representing justified exceptions in a way that is itself rot-resistant. A comment in the code explaining the exception will rot. A markdown file documenting it will rot faster.
 
-The most honest proposed solution is a structured exception registry -- a machine-readable file, version-controlled alongside the code, where each exception carries a threshold deviation, a justification, and an expiry condition. Something like: "Package X is permitted a Distance score above 0.4 until the v2 interface is finalised, at which point this exception is automatically invalid." The expiry condition is the key property. An exception with no expiry is documentation. An exception with an expiry is a contract.
+The most honest proposed solution is a **structured exception registry** -- a machine-readable file, version-controlled alongside the code, where each exception carries a *threshold deviation*, a *justification*, and an *expiry condition*. Something like: *"Package X is permitted a Distance score above 0.4 until the v2 interface is finalised, at which point this exception is automatically invalid."* **The expiry condition is the key property.** *An exception with no expiry is documentation. An exception with an expiry is a contract.*
 
 This is not naive in principle. It is naive in practice, because it requires developers to maintain a second artifact with discipline that the paper has already argued humans reliably fail to sustain. The honest answer is that this problem is not solved by the framework and will require tooling support -- automated expiry enforcement, CI gates that reject expired exceptions -- to be durable in practice. That tooling does not yet exist in a standardised form.
 
@@ -18,9 +18,9 @@ This is not naive in principle. It is naive in practice, because it requires dev
 
 ### The Social Problem
 
-Adoption requires developers to want to be held accountable. Every intervention described in this paper introduces friction at the moment of maximum impatience -- the moment someone wants to start building.
+**Adoption requires developers to want to be held accountable.** Every intervention described in this paper introduces friction *at the moment of maximum impatience* -- the moment someone wants to start building.
 
-The history of static analysis tooling is instructive and not encouraging. Pylint has existed since 2003. ESLint since 2013. SonarQube since 2007. All are technically sound. All face the same adoption curve: enthusiastic installation, gradual suppression of warnings, eventual configuration drift toward permissiveness, and silent abandonment. The tools do not fail because they are wrong. They fail because the cost of compliance feels immediate and the benefit feels distant.
+The history of static analysis tooling is *instructive and not encouraging*. Pylint has existed since **2003**. ESLint since **2013**. SonarQube since **2007**. All are technically sound. All face the same adoption curve: *enthusiastic installation, gradual suppression of warnings, eventual configuration drift toward permissiveness, and silent abandonment*. **The tools do not fail because they are wrong.** They fail because *the cost of compliance feels immediate and the benefit feels distant*.
 
 The framework proposed here has no structural solution to this problem. The honest proposed mitigation is integration at the point of least resistance -- shipping metric enforcement as a pre-configured CI step rather than a developer-configured tool, defaulting to warn rather than block until thresholds are calibrated for a given codebase, and making the first violation surfaced by the system something the developer already suspects is a problem. That last point is important: a metric that surfaces a violation the developer recognises earns trust faster than one that surfaces a violation they disagree with.
 
@@ -30,7 +30,7 @@ None of this guarantees adoption. It reduces the activation energy. The social p
 
 ### The Baseline Problem
 
-The proxy metrics in Section VIII -- TTR, TPO, context consumption, and outcome variance -- are only meaningful when compared against a baseline. How many tokens should a well-specified file search operation consume? How much reasoning is appropriate before the first tool call on a moderately complex task? Without established baselines, the metrics produce numbers without reference points.
+The proxy metrics in Section VIII -- *TTR, TPO, context consumption,* and *outcome variance* -- are **only meaningful when compared against a baseline**. How many tokens should a well-specified file search operation consume? How much reasoning is appropriate before the first tool call on a moderately complex task? Without established baselines, the metrics produce numbers without reference points.
 
 Establishing those baselines requires running the three-scenario experiment described in Section VIII across a large enough sample of task types, model families, and codebase sizes to produce statistically stable reference values. That is tractable work. It is also work that has not been done, and that a single paper cannot do alone. It requires coordinated effort -- ideally across multiple research groups, with results published as a shared resource the community can build on.
 
@@ -42,7 +42,7 @@ A less naive but slower solution is to treat baseline establishment as a dedicat
 
 ### The Provenance Problem
 
-Of the four agentic smells described in Section VI, provenance collapse is the only one this paper cannot offer a tractable remediation for. The other three each have a corresponding intervention pillar -- structural metrics for structural smells, controlled vocabularies for semantic smells, structural separation of verifier and implementer for intent smells. Provenance collapse has no such pillar, and the gap is not for lack of looking. It is because the underlying problem -- preserving the *why* behind a decision in a form that an agent can query reliably months later -- has been an open problem in software engineering for decades, and the agentic context has not made it easier.
+Of the four agentic smells described in Section VI, **provenance collapse is the only one this paper cannot offer a tractable remediation for**. The other three each have a corresponding intervention pillar -- structural metrics for structural smells, controlled vocabularies for semantic smells, structural separation of verifier and implementer for intent smells. Provenance collapse has no such pillar, and the gap is not for lack of looking. It is because the underlying problem -- preserving the *why* behind a decision in a form that an agent can query reliably months later -- has been an open problem in software engineering for decades, and the agentic context has not made it easier.
 
 The closest existing practice is the Architecture Decision Record, a convention introduced by Michael Nygard in 2011 *(Nygard, M., 2011)*. ADRs are short structured documents that capture significant architectural decisions, their context, the alternatives considered, and the rationale for the choice made. The convention has been refined repeatedly since: tooling such as `adr-tools`, Log4brains, and the C4 model's decision documentation have iterated on the format, the directory structure, the metadata, and the templates. None of these has solved the staleness problem identified in Section III. An ADR is a markdown file maintained by discipline. It rots on exactly the schedule that any other markdown file rots, and its rot is silent in exactly the same way. The artifact has no awareness of whether the code it describes still exists in the form described. The community has known this is a problem for over a decade and has not closed it.
 
@@ -54,4 +54,11 @@ This problem is named here because it is the right problem to name. Its solution
 
 ---
 
-These four problems are not fatal to the framework, but they are not equivalent. The intent bootstrapping problem affects a minority of legitimate exceptions, not the common case. The social problem is shared by every quality enforcement tool ever built and is not unique to this approach. The baseline problem is a tractable research gap, not a theoretical objection. The provenance problem is qualitatively different from the other three: it is genuinely open, the solution space has not yet converged, and the framework's ability to address it depends on work that has not yet been done by anyone -- not for lack of effort, but for lack of a viable design. A reader who encounters any of these four without acknowledgement will find them anyway. Better to name them first.
+These four problems are **not fatal to the framework**, but they are *not equivalent*.
+
+- The **intent bootstrapping problem** affects a minority of legitimate exceptions, *not the common case*.
+- The **social problem** is shared by every quality enforcement tool ever built and is *not unique to this approach*.
+- The **baseline problem** is a tractable research gap, *not a theoretical objection*.
+- The **provenance problem** is *qualitatively different* from the other three: it is **genuinely open**, the solution space has not yet converged, and the framework's ability to address it depends on work that has not yet been done by anyone -- *not for lack of effort, but for lack of a viable design*.
+
+**A reader who encounters any of these four without acknowledgement will find them anyway.** *Better to name them first.*
