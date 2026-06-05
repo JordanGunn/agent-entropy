@@ -1,4 +1,4 @@
-# VIII. Measuring What Cannot Be Seen Directly
+# VII. Measuring What Cannot Be Seen Directly
 
 The most predictable objection to the framework described in this paper is that **ambiguity cannot
 be measured**. It is subjective, contextual, and invisible until it has already propagated into the
@@ -19,6 +19,8 @@ entropy**: the agent can resolve it with minimal disambiguation. **An ambiguous 
 In other words, *the agent must spend reasoning budget exploring the space of possible interpretations
 before it can act*. That expenditure is **measurable**.
 
+This is not a metaphor borrowed from information theory; *it is the same quantity*. The disambiguation an agent performs is the **Entropy of Interaction** of `Section IV` — the `decay(PROMPT)` and the interpretation gain `γ` — **made observable in the transcript**, and an empty posture slot leaves the same wake (the **Entropy of Posture**). What the transcript cannot show, the artifact does: the work's **quality** (`Section VI`) — the structural and lexical residue all three entropies leave in the work itself, the **Entropy of Expression** most legibly of all. *The three rise together*, and this chapter measures them from both sides: **what the agent had to think, and what it left behind.**
+
 > **Tokens are the unit of reasoning currency in large language models, and a session log is a complete
 record of how that currency was spent.**
 
@@ -30,8 +32,8 @@ record of how that currency was spent.**
 
 The total tokens consumed to complete an equivalent task under controlled conditions.
 
-If two agents are given the same task -- one with all three intervention pillars applied,
-one with none -- and *both succeed*, the difference in context consumption is attributable to
+If two agents are given the same task -- one supplied a complete context (the slot artifacts of `Sections IV–VI`),
+one a bare prompt -- and *both succeed*, the difference in context consumption is attributable to
 **the disambiguation work performed by the less-specified agent**.
 
 This is the *coarsest* metric and the *most intuitive*. It answers the question:
@@ -132,19 +134,19 @@ for how diagnostic tooling should be designed.
 
 ### Partial Proof of Concept
 
-This experiment has not yet been run in full. But the structural pillar alone has already been benchmarked, and the results are
+This experiment has not yet been run in full. But one intervention has already been benchmarked, and the results are
 directionally consistent with the hypothesis.
 
-The structural pillar implementation, by constraining agent authority to parameter selection and reserving execution for deterministic scripts, reduced context
+A deterministic-search intervention — constraining agent authority to parameter selection and reserving execution for deterministic scripts — reduced context
 consumption by 47% and search operations by 98% with no degradation in output quality. That is a single intervention, applied
 only to file search operations, producing the largest predicted effect. Notably, file search is precisely the domain where an
-unconstrained agent accumulates the most disambiguation overhead; reasoning about which files to read rather than executing a
+unconstrained agent accumulates the most disambiguation overhead — *the most visible component of the Entropy of Interaction* — reasoning about which files to read rather than executing a
 well-scoped search plan.
 
-The full three-pillar experiment: structural constraints, controlled vocabulary, and intent interception applied simultaneously, 
-is the logical next step. The measurement framework described above providing the instrumentation. The hypothesis is that each
-pillar produces an independent, additive reduction in TTR, TPO, and context consumption, and that all three together produce a
-corresponding reduction in outcome variance.
+The full experiment — the interventions applied simultaneously: a verifier and frozen intent record (attacking the **Entropy of Interaction**), a provenance-and-posture
+record (the **Entropy of Posture**), and structural-and-lexical tooling (the **Entropy of Expression**) — is the logical next step, with the measurement
+framework above providing the instrumentation. The hypothesis is that each artifact produces an independent, additive reduction in TTR, TPO, and context
+consumption, and that all three together produce a corresponding reduction in outcome variance.
 
 ---
 
