@@ -1,4 +1,4 @@
-# VIII. Measuring What Cannot Be Seen Directly
+# IX. Measuring What Cannot Be Seen Directly
 
 The most predictable objection to the framework described in this paper is that ambiguity cannot
 be measured. It is subjective, contextual, and invisible until it has already propagated into the
@@ -19,7 +19,7 @@ entropy: the agent can resolve it with minimal disambiguation. An ambiguous prom
 In other words, the agent must spend reasoning budget exploring the space of possible interpretations
 before it can act. That expenditure is measurable.
 
-This is not a metaphor borrowed from information theory; it is the same quantity. The disambiguation an agent performs is the **Entropy of Interaction** of the intent-gap section — the lossy reading `A(i)` and the interpretation gain `γ` — made observable in the transcript, and an empty posture component leaves the same wake (the **Entropy of Posture**). What the transcript cannot show, the artifact does: the work's quality — the structural and lexical residue all three entropies leave in the work itself, which the quality section reads as slop, the **Entropy of Expression** most legibly of all. The three rise together, and this chapter measures them from both sides: what the agent had to think, and what it left behind.
+This is not a metaphor borrowed from information theory; it is the same quantity. The disambiguation an agent performs is the **Entropy of Interaction** of the intent-gap section — the lossy reading `A(i)` and the interpretation gain `γ` — made observable in the transcript, and an empty trajectory leaves the same wake (the **Entropy of Trajectory**). Authority leaves one too (the **Entropy of Authority**): an undeclared operating world surfaces as the agent's deliberation over what it is allowed to do, and as actions that cross a boundary it was never told about. What the transcript cannot show, the artifact does: the work's quality — the structural and lexical residue all four entropies leave in the work itself, which the quality section reads as slop, the **Entropy of Expression** most legibly of all. The four rise together, and this chapter measures them from both sides: what the agent had to think, and what it left behind.
 
 > Tokens are the unit of reasoning currency in large language models, and a session log is a complete
 record of how that currency was spent.
@@ -32,7 +32,7 @@ record of how that currency was spent.
 
 The total tokens consumed to complete an equivalent task under controlled conditions.
 
-If two agents are given the same task -- one supplied a complete context (the component artifacts of the intent-gap, posture, and expression sections),
+If two agents are given the same task -- one supplied a complete context (the component artifacts of the intent-gap, trajectory, expression, and authority sections),
 one a bare prompt -- and both succeed, the difference in context consumption is attributable to
 the disambiguation work performed by the less-specified agent.
 
@@ -143,10 +143,10 @@ only to file search operations, producing the largest predicted effect. Notably,
 unconstrained agent accumulates the most disambiguation overhead — the most visible component of the Entropy of Interaction — reasoning about which files to read rather than executing a
 well-scoped search plan.
 
-The full experiment — the interventions applied simultaneously: a verifier and frozen intent record (attacking the **Entropy of Interaction**), a provenance-and-posture
-record (the **Entropy of Posture**), and structural-and-lexical tooling (the **Entropy of Expression**) — is the logical next step, with the measurement
+The full experiment — the interventions applied simultaneously: a verifier and frozen intent record (attacking the **Entropy of Interaction**), a provenance-and-horizon
+record (the **Entropy of Trajectory**), structural-and-lexical tooling (the **Entropy of Expression**), and a declared authority layer (the **Entropy of Authority**) — is the logical next step, with the measurement
 framework above providing the instrumentation. The hypothesis is that each artifact produces an independent, additive reduction in TTR, TPO, and context
-consumption, and that all three together produce a corresponding reduction in outcome variance.
+consumption, and that all four together produce a corresponding reduction in outcome variance.
 
 ---
 

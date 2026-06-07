@@ -1,4 +1,4 @@
-# VII. What Messy Actually Means
+# VIII. What Messy Actually Means
 
 The feeling described in the opening section has names. It has had them since 1999. The taxonomy is incomplete.
 
@@ -16,13 +16,13 @@ An agent has no nose. It cannot detect the vague wrongness that an experienced d
 
 ## What is needed is something computable
 
-What is needed is something computable. Something that does not require an experienced nose, that produces the same result regardless of who runs it, and that cannot be argued away in a code review. More importantly, something that exists outside the agent's control surface entirely. A metric the agent computes for itself is subject to the same incentive structure as every other output it produces -- if approval is the goal, the score will be massaged, rounded, or quietly omitted. A metric computed by external tooling and reported back is something else: a fixed referent the agent cannot reshape, the conversational equivalent of running into a wall. This is the architectural inversion of the sycophancy problem described in the three-entropies section. Agreement is cheap; arithmetic is not.
+What is needed is something computable. Something that does not require an experienced nose, that produces the same result regardless of who runs it, and that cannot be argued away in a code review. More importantly, something that exists outside the agent's control surface entirely. A metric the agent computes for itself is subject to the same incentive structure as every other output it produces -- if approval is the goal, the score will be massaged, rounded, or quietly omitted. A metric computed by external tooling and reported back is something else: a fixed referent the agent cannot reshape, the conversational equivalent of running into a wall. This is the architectural inversion of the sycophancy problem described in the four-entropies section. Agreement is cheap; arithmetic is not.
 
 The research community has been building these instruments for decades. They have simply not been applied to the agentic context. What follows is a survey of the candidate measurements, organised loosely by the property they capture. One observation is worth holding throughout: the classical work is a survey of structural instruments. It measures the shape of dependency graphs, the cohesion of classes, the complexity of methods, the drift between artifacts over time. These are properties of structure. They are necessary, well-established, and -- for the most part -- predate the failure modes this paper is concerned with by several decades.
 
 ## Quality has two surfaces
 
-What the rest of this chapter measures is not a fourth entropy. It is the surface the other three are read from. The intent-gap, posture, and expression sections describe the three entropies of the work — its comprehension, its posture, its structure. This chapter describes the **quality** of the artifact they leave behind, made measurable, and the **slop** that is quality's absence.
+What the rest of this chapter measures is not a fifth entropy. It is the surface the other four are read from. The intent-gap, trajectory, expression, and authority sections describe the four entropies of the work — its comprehension, its trajectory, its structure, and its authority. This chapter describes the **quality** of the artifact they leave behind, made measurable, and the **slop** that is quality's absence.
 
 Quality has exactly two surfaces, and slop is their inverse:
 
@@ -39,13 +39,13 @@ Slop is the colloquial name for what those two surfaces look like once they deca
 
 The second line carries the paper's thesis into the artifact. Slop is not something the model manufactures under stable conditions. It is the visible residue of entropy that was already in the environment when the artifact was made.
 
-The three entropies rise co-variantly, and they accumulate in the context the agent works from — a comprehension polluted across turns, a posture with no lineage, a structure the agent cannot see. Quality is the surface they fossilise on; slop is the magnitude of the fossil. A degraded context does not announce itself in the diff. It settles into a dependency graph drifting toward the Zone of Pain, or a vocabulary fragmenting into five words for one idea — the three entropies, pressed into a surface an external tool can read.
+The four entropies rise co-variantly, and they accumulate in the context the agent works from — a comprehension polluted across turns, a trajectory with no lineage, a structure the agent cannot see, and an authority the agent only inferred. Quality is the surface they fossilise on; slop is the magnitude of the fossil. A degraded context does not announce itself in the diff. It settles into a dependency graph drifting toward the Zone of Pain, a vocabulary fragmenting into five words for one idea, or a compatibility shim guarding a consumer that does not exist — the four entropies, pressed into a surface an external tool can read.
 
 This is the opening section's claim made measurable. The model did not get worse; the context it works from got poorer, and slop is how a poorer context surfaces in the work. So slop is not a defect to be reviewed away case by case. It is a gauge of accumulated entropy, and the only way to move the gauge is to lower what it measures.
 
 The reframe is testable. If slop is inherited rather than produced, the same model on a fixed, low-entropy context — the frozen `C` of the whole-context section — should leave measurably less of it than on a polluted one: slop should track the environment, not the model release. Compute the two surfaces across matched artifacts that differ only in the entropy of the context that produced them, and the prediction is a clean gradient — quality falling and slop rising as environmental entropy climbs, the model held fixed.
 
-Quality, then, is not a fourth entropy. It is the surface the other three are read from, and slop is what you read off it. What remains in this chapter is the instrumentation: first the structural surface, which the field has measured for forty years, then the vocabulary surface, which it has not.
+Quality, then, is not a fifth entropy. It is the surface the other four are read from, and slop is what you read off it. What remains in this chapter is the instrumentation: first the structural surface, which the field has measured for forty years, then the vocabulary surface, which it has not.
 
 ## Architectural Health
 
@@ -85,7 +85,7 @@ The oldest member of the family is *Maurice Halstead's* **Software Science** (19
 
 The metrics above describe a snapshot. The most powerful smell detectors operate on the dimension that snapshots ignore: time.
 
-**Change coupling** (also called *temporal* or *logical* coupling), formalised by *Gall, Hajek, and Jazayeri* (1998) and developed extensively by *Adam Tornhill* in *Your Code as a Crime Scene* (2015), measures which files consistently change together in commits. It reveals dependencies that no static analysis can see: files that share no imports, no inheritance, no namespace, but break together with statistical regularity. The same instrument applied in the negative -- as discussed in the posture section -- reveals decoupling between documentation artifacts and the source files they nominally describe.
+**Change coupling** (also called *temporal* or *logical* coupling), formalised by *Gall, Hajek, and Jazayeri* (1998) and developed extensively by *Adam Tornhill* in *Your Code as a Crime Scene* (2015), measures which files consistently change together in commits. It reveals dependencies that no static analysis can see: files that share no imports, no inheritance, no namespace, but break together with statistical regularity. The same instrument applied in the negative -- as discussed in the trajectory section -- reveals decoupling between documentation artifacts and the source files they nominally describe.
 
 **Hotspot analysis**, also from Tornhill, multiplies code complexity by change frequency to identify the files most at risk of carrying defects. The intuition is straightforward: complex code that never changes is fine, simple code that changes often is fine, complex code that changes often is where the bugs live. The metric is computable from git history and any of the complexity measures above, and it is one of the most consistently validated signals in the literature for predicting where defects will occur *(Nagappan, N. & Ball, T., 2005; Tornhill, A., 2015)*.
 
