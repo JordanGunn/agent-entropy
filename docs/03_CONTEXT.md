@@ -23,13 +23,16 @@ The correction is not more context. More text in the window is not more signal �
 A context window holds trajectory when it preserves four things no agent can reconstruct on its own — what it has understood, what time has made of the work, the structure it acts against, and what action is allowed. The goal is not among them. The goal is what the agent infers from all four.
 
 ```text
-ARTICULATION (i) = PROMPT − INTENT            per-turn gap: what was said minus what was meant
-COMPREHENSION    = Σ A(i)                      the agent's reading of each articulation, accumulated
+ARTICULATION (r) = PROMPT − INTENT             per-turn gap: what was said minus what was meant
+COMPREHENSION    = Σ A(r)                      the agent's reading of each articulation, accumulated
+---
 TRAJECTORY       = PROVENANCE + HORIZON        the time-bearing context — past and future
-PROVENANCE       = Δ(context over time)        what changed, was assumed, decided, left open, superseded
-EXPRESSION       = the work's relationships, compressed
+PROVENANCE       = Δ(CONTEXT)                  The difference between the context at two poitns in time
+EXPRESSION       = PRECISON * ABSTRACTION      granular access to structured abstract representation of compelx relationships
 AUTHORITY        = PERMISSION + GOVERNANCE     what may be done, and the world it must stay valid inside
+---
 CONTEXT (C)      = COMPREHENSION + TRAJECTORY + EXPRESSION + AUTHORITY
+---
 GOAL             = A(C)                        the objective, inferred from the whole context
 ```
 
