@@ -22,9 +22,9 @@ It argues that the problem is structural, measurable, and older than any particu
 Particularly, it asserts two claims:
 
 **(1)**
-> The closing of the gap between a fragmented idea and a working implementation has produced a structural overconfidence: users routinely believe they have communicated a concept clearly, well before they actually understand it clearly themselves. AI systems, optimised for agreement, do not surface this gap — they fill it silently, encoding assumptions the user did not know they were making.
+> The closing of the gap between a fragmented idea and a working implementation has produced a structural overconfidence: users routinely believe they have communicated a concept clearly, well before they actually understand it clearly themselves. AI systems, optimised for agreement, do not surface this gap; they fill it silently, encoding assumptions the user did not know they were making.
 
 **(2)**
 > More powerful AI models do not replace missing or miscommunicated intent; they amplify the problem by hiding it longer. Even modest amounts of ambiguity in user intent produce rapid, compounding degradation in output quality across successive sessions.
 
-Both claims are special cases of one. The agent never acts on your codebase; it acts on a context it cannot audit — and what it cannot audit, it invents. The chapters that follow name the pieces of that context, show how each degrades into a measurable entropy, and propose the artifacts that hold it in check.
+Both claims are special cases of one. The agent never acts on your codebase; it acts on a context it cannot audit, and what it cannot audit, it invents. The chapters that follow name the pieces of that context, show how each degrades into a measurable entropy, and propose the artifacts that hold it in check.
