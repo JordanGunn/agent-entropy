@@ -35,11 +35,12 @@ COMPREHENSION    = Σ A(i)                      the agent's reading of each arti
 TRAJECTORY       = PROVENANCE + HORIZON        the time-bearing context: past and future
 PROVENANCE       = A(Δ(C))                     what changed, was assumed, decided, left open, superseded
 EXPRESSION       = PRECISION * ABSTRACTION     granular access to a structured abstract representation of complex relationships
-AUTHORITY        = AGENCY + GOVERNANCE         what may be done, and the world it must stay valid inside
+AGENCY           = AUTHORITY + GOVERNANCE      what may be done, and the world it must stay valid inside
 ---
-CONTEXT (C)      = COMPREHENSION + TRAJECTORY + EXPRESSION + AUTHORITY
+CONTEXT (C)      = COMPREHENSION + TRAJECTORY + EXPRESSION + AGENCY
+DIRECTIVE (O)    = the action projected across the context
 ---
-GOAL             = A(C)                        the objective, inferred from the whole context
+GOAL             = A(O, C)                     the directive resolved against the whole context
 ```
 
 ## Cadence
@@ -51,7 +52,7 @@ The four components are not one thing, updated together. They change at differen
 - **provenance** accretes one *decision* at a time;
 - **horizon** shifts only when the *direction* does;
 - **governance** changes rarely (the operating world is a *slow* truth) but must be present every time the agent acts;
-- **agency** drifts *within a session*, nudged broader or narrower turn by turn.
+- **authority** drifts *within a session*, nudged broader or narrower turn by turn.
 
 This is **pace layering**, Stewart Brand's account of why buildings and civilisations endure (*How Buildings Learn*, 1994, building on Frank Duffy's *shearing layers*). A system survives by letting each layer move at its own speed: *the fast layers propose, the slow layers dispose; the fast learn, the slow remember.*
 
@@ -59,9 +60,7 @@ By coupling them, one forces a slow layer to a fast layer's pace, and the struct
 
 ## How the Model is Applied
 
-Put the pieces together and the objective the whole paper serves comes into view. If `GOAL = A(C)` and the slow layers of `C` are fixed, then the only thing moving between one run and the next is the fast layer, the articulation. A comprehensive, fixed context is a program, written in natural language; `A` is the interpreter; the goal and the diff are the run. You do not get bit-exact replay: `A₁(C) ≠ A₂(C)` forbids it. But you get replay to the resolution the schema pins down, which is exactly what **agentic approximation** expresses as `D(x) ≈ A(C)`.
-
-Fix a comprehensive `C`, and agent work becomes correctable at the grain of its context, replayable, and runnable like a script.
+The assembled context is complete but inert: it describes a situation in full and instructs nothing. What the agent is told to do with it, the directive that turns a fixed context into correctable, replayable work, is the subject of the directive section.
 
 None of this is new. The need for one coherent stance behind every local decision is **conceptual integrity**, which Brooks named the most important consideration in system design half a century ago *(Brooks, F.P., 1975)*. His mechanism was an architect who held the whole design in one head and vetoed any local choice that broke it. The agent is that architect's carry, now empty: it holds no comprehension between sessions, no history it did not just read, no authority it was not just handed. The model this section defines is that carry, externalised into artifacts that each move at their own speed.
 
@@ -69,7 +68,7 @@ None of this is new. The need for one coherent stance behind every local decisio
 
 ## Experiments
 
-**Component ablation against a fixed task.** Take a battery of development tasks for which a complete context can be authored by hand (*comprehension, the provenance of the touched files, horizon, the structural model, and the authority the work runs under*), and ablate one component at a time against the full-context control, measuring output quality against a held-out specification alongside the transcript metrics of the measurement section. The hypothesis is that each ablation degrades a distinct, separable dimension: comprehension-ablation raises outcome variance, provenance-ablation raises duplication and net-additive fusion, horizon-ablation produces locally-clean choices a reviewer flags as future-hostile, expression-ablation raises boundary violations and re-implementation, and authority-ablation produces both actions taken outside the declared bounds and over-cautious refusals inside them. A confirmed result establishes the four components as independent channels, not facets of one underspecification.
+**Component ablation against a fixed task.** Take a battery of development tasks for which a complete context can be authored by hand (*comprehension, the provenance of the touched files, horizon, the structural model, and the agency the work runs under*), and ablate one component at a time against the full-context control, measuring output quality against a held-out specification alongside the transcript metrics of the measurement section. The hypothesis is that each ablation degrades a distinct, separable dimension: comprehension-ablation raises outcome variance, provenance-ablation raises duplication and net-additive fusion, horizon-ablation produces locally-clean choices a reviewer flags as future-hostile, expression-ablation raises boundary violations and re-implementation, and agency-ablation produces both actions taken outside the declared bounds and over-cautious refusals inside them. A confirmed result establishes the four components as independent channels, not facets of one underspecification.
 
 **Pile versus whole context, held to equal length.** Give two agents the *same token budget* of context for the same task: one a conventional pile (recent chat, open files, a memory blob), the other a context occupying the components in equal size. Hold length constant so the comparison isolates structure, not quantity. The hypothesis is that the component-structured configuration produces lower outcome variance and lower disambiguation overhead at equal token cost, evidence that the gain is organisation of context, not volume of it.
 

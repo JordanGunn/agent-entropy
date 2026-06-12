@@ -1,4 +1,4 @@
-# VIII. What Messy Actually Means
+# IX. What Messy Actually Means
 
 The feeling described in the opening section has names. It has had them since 1999. The taxonomy is incomplete.
 
@@ -22,7 +22,7 @@ The research community has been building these instruments for decades. They hav
 
 ## Quality has two surfaces
 
-What the rest of this chapter measures is not a fifth entropy. It is the surface the other four are read from. The intent-gap, trajectory, expression, and authority sections describe the four entropies of the work: its comprehension, its trajectory, its structure, and its authority. This chapter describes the **quality** of the artifact they leave behind, made measurable, and the **slop** that is quality's absence.
+What the rest of this chapter measures is not a fifth entropy. It is the surface the other four are read from. The intent-gap, trajectory, expression, and agency sections describe the four entropies of the work: its comprehension, its trajectory, its structure, and its agency. This chapter describes the **quality** of the artifact they leave behind, made measurable, and the **slop** that is quality's absence.
 
 Quality has exactly two surfaces, and slop is their inverse:
 
@@ -39,7 +39,7 @@ Slop is the colloquial name for what those two surfaces look like once they deca
 
 The second line carries the paper's thesis into the artifact. Slop is not something the model manufactures under stable conditions. It is the visible residue of entropy that was already in the environment when the artifact was made.
 
-The four entropies rise co-variantly, and they accumulate in the context the agent works from: a comprehension polluted across turns, a trajectory with no lineage, a structure the agent cannot see, and an authority the agent only inferred. Quality is the surface they fossilise on; slop is the magnitude of the fossil. A degraded context does not announce itself in the diff. It settles into a dependency graph drifting toward the Zone of Pain, a vocabulary fragmenting into five words for one idea, or a compatibility shim guarding a consumer that does not exist: the four entropies, pressed into a surface an external tool can read.
+The four entropies rise co-variantly, and they accumulate in the context the agent works from: a comprehension polluted across turns, a trajectory with no lineage, a structure the agent cannot see, and an agency the agent only inferred. Quality is the surface they fossilise on; slop is the magnitude of the fossil. A degraded context does not announce itself in the diff. It settles into a dependency graph drifting toward the Zone of Pain, a vocabulary fragmenting into five words for one idea, or a compatibility shim guarding a consumer that does not exist: the four entropies, pressed into a surface an external tool can read.
 
 This is the opening section's claim made measurable. The model did not get worse; the context it works from got poorer, and slop is how a poorer context surfaces in the work. So slop is not a defect to be reviewed away case by case. It is a gauge of accumulated entropy, and the only way to move the gauge is to lower what it measures.
 

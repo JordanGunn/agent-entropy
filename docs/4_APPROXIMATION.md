@@ -45,7 +45,7 @@ This is the move the rest of the paper applies, everywhere:
 - The **intent record** of the intent-gap section is an `I`: schema for the what and why that cannot be left blank, prose for the judgement that cannot be structured.
 - The **trajectory** artifacts pin the slow layers so `A(C)` stops re-deriving them: provenance as the delta recording what changed, horizon as the bounded statement of direction.
 - The **expression** model is almost all `S`: the schema-heaviest component, relationships projected to a resolution prose could never hold without overflowing the window.
-- The **authority** layer is near-pure schema too: agency and governance declared once, so the agent stops inferring its remit and its operating world from the conversation.
+- The **agency** layer is near-pure schema too: authority and governance declared once, so the agent stops inferring its remit and its operating world from the conversation.
 - The **quality** metrics push all the way to `D`, for a reason that is not `|x|` at all but trust: a number computed by external tooling is one the agent cannot agree its way around. Agreement is cheap; arithmetic is not.
 - And `GOAL = A(C)` is the largest instance of all. The context is the `I`; the replay objective of the whole-context section is `D(x…) ≈ A(C)` read at the scale of a whole project: fix enough of `C` as schema, and the run reproduces to the resolution that schema pins.
 

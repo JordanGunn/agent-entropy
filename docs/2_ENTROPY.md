@@ -51,7 +51,7 @@ Its understanding can be correct, confirmed step by step, and the structure it b
 it cannot see, a single scope into which it shovels everything. It can hold the idea; it cannot hold the shape of the idea, because nothing gives it 
 a precise, current model of how the work relates to itself.
 
-### 4. Entropy of Authority
+### 4. Entropy of Agency
 
 The action the agent is allowed to take, and the world that action must stay valid inside.
 
