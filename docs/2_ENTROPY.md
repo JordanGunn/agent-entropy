@@ -1,4 +1,4 @@
-# II. A Taxonomy of Agentic Entropy Sources
+# 2. A Taxonomy of Agentic Entropy Sources
 
 *Four places order leaks out of an agentic system, and why a more capable model is not the solution.*
 

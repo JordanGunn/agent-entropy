@@ -1,4 +1,4 @@
-# III. The Context Model
+# 3. The Context Model
 
 *What a window must hold, and why the goal is something the agent infers from it, not something it keeps.*
 
@@ -63,13 +63,3 @@ By coupling them, one forces a slow layer to a fast layer's pace, and the struct
 The assembled context is complete but inert: it describes a situation in full and instructs nothing. What the agent is told to do with it, the directive that turns a fixed context into correctable, replayable work, is the subject of the directive section.
 
 None of this is new. The need for one coherent stance behind every local decision is **conceptual integrity**, which Brooks named the most important consideration in system design half a century ago *(Brooks, F.P., 1975)*. His mechanism was an architect who held the whole design in one head and vetoed any local choice that broke it. The agent is that architect's carry, now empty: it holds no comprehension between sessions, no history it did not just read, no authority it was not just handed. The model this section defines is that carry, externalised into artifacts that each move at their own speed.
-
----
-
-## Experiments
-
-**Component ablation against a fixed task.** Take a battery of development tasks for which a complete context can be authored by hand (*comprehension, the provenance of the touched files, horizon, the structural model, and the agency the work runs under*), and ablate one component at a time against the full-context control, measuring output quality against a held-out specification alongside the transcript metrics of the measurement section. The hypothesis is that each ablation degrades a distinct, separable dimension: comprehension-ablation raises outcome variance, provenance-ablation raises duplication and net-additive fusion, horizon-ablation produces locally-clean choices a reviewer flags as future-hostile, expression-ablation raises boundary violations and re-implementation, and agency-ablation produces both actions taken outside the declared bounds and over-cautious refusals inside them. A confirmed result establishes the four components as independent channels, not facets of one underspecification.
-
-**Pile versus whole context, held to equal length.** Give two agents the *same token budget* of context for the same task: one a conventional pile (recent chat, open files, a memory blob), the other a context occupying the components in equal size. Hold length constant so the comparison isolates structure, not quantity. The hypothesis is that the component-structured configuration produces lower outcome variance and lower disambiguation overhead at equal token cost, evidence that the gain is organisation of context, not volume of it.
-
-**Replay under a fixed context.** Fix a comprehensive `C` (slow layers frozen, governance pinned), run the same task from clean sessions repeatedly, then perturb exactly one component and re-run. The hypothesis is two-part: that outcome variance under a fully fixed `C` collapses toward the floor the non-equivalence axiom allows (replay to schema resolution), and that a single-component perturbation moves the output along that component's signature dimension only, establishing that a fixed context behaves like a program whose edits are localisable. This is the direct test of agent work as replayable script.

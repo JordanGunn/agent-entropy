@@ -1,4 +1,4 @@
-# VIII. The Directive
+# 6. The Directive
 
 *The context is everything the agent knows; the directive is what it is told to do with it.*
 
@@ -30,11 +30,3 @@ The payoff of separating the operator from the operand is that the operator can 
 There is an exact precedent for this shape, and it is one every developer already uses. An IDE holds a codebase and offers a set of run configurations over it: run, compile, debug, test, lint, profile. The codebase is fixed; the configuration selects the action. Substitute the context for the codebase and the directive for the run configuration, and the model is the same: `GOAL = A(O, C)` is "run configuration `O` over codebase `C`."
 
 The difference is the executor. The IDE runs its configuration through a deterministic toolchain; the agent runs its directive through `A`, the lossy interpreter, which never reproduces exactly. The aspiration of this whole paper is to narrow that gap. Fix `C` comprehensively, enumerate `O` precisely, and agentic work begins to behave like a run configuration: a named action over a fixed substrate, repeatable to the resolution its context pins down. The directive is the last piece of the model because it is the one that makes the rest runnable.
-
----
-
-## Experiments
-
-**Directive and context as separable inputs.** Hold a comprehensive `C` fixed and vary only `O` across a named set (summarise, extend, audit, document). Measure whether the outputs are coherent specialisations of one understanding rather than re-derivations: that the agent's reading of `C` stays stable across directives, and only the action projected over it changes. A confirmed result establishes `O` and `C` as separable inputs, not one entangled request.
-
-**Enumerated directives against open-ended prompting.** Compare a fixed library of pre-defined directives, each a sub-agent over the same `C`, against open-ended per-turn prompting on the same tasks. The hypothesis is that the enumerated set captures most of the value at a fraction of the disambiguation cost, because the directive no longer has to be reconstructed from the conversation each time, and the saving is the disambiguation overhead the measurement section meters.
