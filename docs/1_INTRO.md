@@ -1,30 +1,13 @@
 # 1. Introduction
 
-*Something feels wrong, but you cannot say what.*
+*Work that passes every check and still feels wrong, and why the fault is not the model but the context it was given.*
 
-The tests pass. The pull request looks reasonable. The agent confidently summarised what it did, and the summary sounds right. You merge it. Two weeks later, a bug surfaces in a part of the codebase you forgot was touched. You dig into it and find code that technically works but is structured in a way no experienced developer would have chosen. You cannot point to a rule it broke. You cannot cite a standard it violated. It just feels wrong, and that feeling has no name.
+The tests pass. The pull request is clean, the summary reads well, and the agent is sure it did what you asked. You merge. Weeks later a defect surfaces in a corner of the codebase you had forgotten was touched, in code that works and that no one who knew the system would have written. You cannot name the rule it broke, because it broke none. It is just wrong, and the wrongness has no name.
 
-This is where most conversations about AI-generated code end: in a vague dissatisfaction that gets filed under "good enough" or quietly blamed on the model.
+Most accounts of AI-generated work stop here, in a vague dissatisfaction filed under "good enough" or blamed on the model. The blame is the tell. The complaints are everywhere and confidently made: the model got worse, it stopped following instructions, it was quietly capped. They are also unfalsifiable, because the people making them hold no instrument on the variable most likely responsible: not the model, but what they handed it.
 
-It should not end there.
+This paper argues that the model did not get worse. The problem is structural, measurable, and older than any model release. An agent never acts on your codebase. It acts on a context, and that context is something you assemble, mostly by accident, and never inspect. What the context fails to hold, the agent does not leave blank; it fills from the average of everything it has ever seen, confidently, and moves on. The agent never edits your code. It edits a context you never audit, and emits a diff.
 
-## The shape of the unease
+A more capable model does not fix this. It hides it. Where a weak model under a poor context fails early and visibly, a strong one holds the disorder together and fails late, all at once, past the point where the order needed to diagnose it still exists. The better the model, the longer the gap between cause and symptom, and the larger the eventual repair. Capability buys delay, not correctness, and that is the more dangerous bargain.
 
-The people most willing to praise AI coding tools are often the same ones most willing to be impressed by volume of the generated output and tests they will never examine. This is not a criticism of enthusiasm. It is an observation about what happens when the gap between what was asked and what was built goes unmeasured long enough to feel normal. As AI models become more capable, they become better at producing outputs that look right. As that happens, the bar for examining those outputs quietly drops. Hubris accumulates through proxied achievements, delivered by a system optimised to satisfy the person using it. Meanwhile, the precision of language used to instruct that system decreases at exactly the moment its value is highest.
-
-The dominant narrative in online communities attributes this unease to the models themselves. *The model is worse than it used to be. The model does not follow instructions. The model is being deliberately limited.* These complaints are widespread, confidently stated, and largely unfalsifiable, because the people making them have no instrumentation on the variable most likely responsible: their own intent.
-
-## Two claims
-
-This paper argues that the model did not get worse.
-It argues that the problem is structural, measurable, and older than any particular AI release.
-
-Particularly, it asserts two claims:
-
-**(1)**
-> The closing of the gap between a fragmented idea and a working implementation has produced a structural overconfidence: users routinely believe they have communicated a concept clearly, well before they actually understand it clearly themselves. AI systems, optimised for agreement, do not surface this gap; they fill it silently, encoding assumptions the user did not know they were making.
-
-**(2)**
-> More powerful AI models do not replace missing or miscommunicated intent; they amplify the problem by hiding it longer. Even modest amounts of ambiguity in user intent produce rapid, compounding degradation in output quality across successive sessions.
-
-Both claims are special cases of one. The agent never acts on your codebase; it acts on a context it cannot audit, and what it cannot audit, it invents. The chapters that follow name the pieces of that context, show how each degrades into a measurable entropy, and propose the artifacts that hold it in check.
+The chapters that follow take this apart. The felt wrongness has a name and a surface you can measure it on, taken up next. Beneath that surface sits a context with nameable parts, each decaying in its own way when nothing holds it in place, and each holdable by an artifact built for the job, with a single directive run over the whole. The argument is not that the model should be trusted less. It is that the thing we hand it has been left unnamed, unmeasured, and unmaintained, and that all three are fixable.
