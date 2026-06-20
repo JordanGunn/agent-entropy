@@ -1,4 +1,4 @@
-# 4. Determinism and Inference
+# 3. Inference
 
 *Why a deterministic procedure and an agentic one are not rivals but the two ends of a single dial.*
 
@@ -7,7 +7,7 @@ Not every artifact in an agentic system should be made deterministic, and not ev
 > A deterministic procedure `D(x…)` enumerates: given the same arguments, it returns the same output. It is reproducible by definition.
 > An agentic procedure `A(I)` infers: given an instruction `I`, it reasons over it to generate an output.
 
-An instruction is `I = S | P`: a schema `S` and prose `P` together, the structured constraints and the judgement that cannot be structured. This is the same `I` the context model calls `C`: a context is an instruction, the largest one the agent receives, and `GOAL = A(O, C)` is `A` run over it under a directive.
+An instruction is `I = S | P`: a schema `S` and prose `P` together, the structured constraints and the judgement that cannot be structured. This is the same `I` the next section's context model calls `C`: a context is an instruction, the largest one the agent receives, and `GOAL = A(O, C)` is `A` run over it under a directive.
 
 The two differ in one load-bearing property: **inference does not reproduce**. `A₁(I) ≠ A₂(I)`; two runs of the same instruction do not return the same output. The non-determinism lives in the process, not the instruction, and no amount of precision in `I` removes it. Sampling, floating-point non-associativity, batch effects, and their compounding across a trajectory guarantee it in deployment.
 

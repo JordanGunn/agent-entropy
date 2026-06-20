@@ -1,4 +1,4 @@
-# 6. The Directive
+# 5. Directive
 
 *The context is everything the agent knows; the directive is what it is told to do with it.*
 

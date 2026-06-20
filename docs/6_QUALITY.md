@@ -1,4 +1,4 @@
-# 7. What Messy Actually Means
+# 6. Quality
 
 The feeling described in the opening section has names, and has had them since 1999.
 
